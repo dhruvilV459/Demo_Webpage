@@ -1,0 +1,103 @@
+<!-- 
+    Name: Dhruvil Vachhani
+    Id: C0883898
+    Assignment 8-9
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Registration</h1>
+  <form id="registrationForm">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required>
+      <span class="error" id="firstNameError"></span>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required>
+      <span class="error" id="lastNameError"></span>
+    </div>
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" required>
+      <span class="error" id="dobError"></span>
+    </div>
+    <div>
+      <p>Gender:</p>
+      <label>
+        <input type="radio" name="gender" value="male" required> Male
+      </label>
+      <label>
+        <input type="radio" name="gender" value="female" required> Female
+      </label>
+      <span class="error" id="genderError"></span>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <span class="error" id="passwordError"></span>
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" required>
+      <span class="error" id="confirmPasswordError"></span>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      validateForm();
+    });
+
+    function validateForm() {
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const dob = document.getElementById("dob").value;
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      const firstNameError = document.getElementById("firstNameError");
+      const lastNameError = document.getElementById("lastNameError");
+      const dobError = document.getElementById("dobError");
+      const genderError = document.getElementById("genderError");
+      const passwordError = document.getElementById("passwordError");
+      const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+      // Reseting error messages
+      firstNameError.textContent = "";
+      lastNameError.textContent = "";
+      dobError.textContent = "";
+      genderError.textContent = "";
+      passwordError.textContent = "";
+      confirmPasswordError.textContent = "";
+
+      // Checking for empty fields
+      if (firstName === "") {
+        firstNameError.textContent = "Please enter your first name.";
+      }
+
+      // Checking for password match
+      if (password !== confirmPassword) {
+        confirmPasswordError.textContent = "Passwords do not match.";
+      }
+
+
+      if (!firstNameError.textContent && !lastNameError.textContent && !dobError.textContent && !genderError.textContent && !passwordError.textContent && !confirmPasswordError.textContent) {
+        alert("Registration successful!");
+      }
+    }
+  </script>
+</body>
+</html>
