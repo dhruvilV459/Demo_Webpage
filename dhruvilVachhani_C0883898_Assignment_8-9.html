@@ -95,7 +95,10 @@
 
 
       if (!firstNameError.textContent && !lastNameError.textContent && !dobError.textContent && !genderError.textContent && !passwordError.textContent && !confirmPasswordError.textContent) {
+        // Displaying Registration successful message
         alert("Registration successful!");
+        // Resseting the registration form to default values
+        document.getElementById("registrationForm").reset()
       }
     }
   </script>
